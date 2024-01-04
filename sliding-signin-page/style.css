@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  height: 100vh;
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.form-container {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  padding: 32px;
+  transition: 0.6s ease-in-out;
+}
+.signup-container {
+  opacity: 0;
+  z-index: 1;
+}
+
+.signin-container {
+  z-index: 2;
+}
+
+form {
+  height: 100%;
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form h1 {
+  font-size: 40px;
+  color: #27b397;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 32px 0px;
+}
+
+.links a {
+  padding: 5px 12px;
+  text-decoration: none;
+  font-size: 24px;
+  color: #0f172a;
+  border: 1px solid #94a3b8;
+  border-radius: 100%;
+}
+
+form span {
+  color: #94a3b8;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.input-group {
+  position: relative;
+  margin: 8px 0px;
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #27b397;
+}
+
+.forgot-password {
+  text-decoration: none;
+  font-size: 16px;
+  color: #94a3b8;
+  border-bottom: 1px solid #94a3b8;
+  margin-top: 16px;
+}
+
+.form-container button {
+  padding: 12px 64px;
+  margin-top: 32px;
+  border: 1px solid #ffffff;
+  outline: none;
+  font-size: 16px;
+  color: #ffffff;
+  border-radius: 32px;
+  background-color: #27b397;
+  cursor: pointer;
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 10;
+}
+
+.overlay-wrapper {
+  background: url("bg.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  color: #ffffff;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 64px;
+  text-align: center;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.panel-left {
+  right: 50%;
+  transform: translateX(-20%);
+}
+
+.panel-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.panel h1 {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+.panel p {
+  max-width: 350px;
+  margin: 0px auto;
+  line-height: 32px;
+}
+
+.panel button {
+  padding: 12px 64px;
+  margin-top: 32px;
+  border: 1px solid #ffffff;
+  outline: none;
+  font-size: 16px;
+  color: #ffffff;
+  border-radius: 32px;
+  background-color: transparent;
+}
+.container.active .signin-container {
+  transform: translateX(100%);
+}
+.container.active .signup-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+.container.active .overlay-container {
+  transform: translateX(-100%);
+}
+.container.active .overlay-wrapper {
+  transform: translateX(50%);
+}
+.container.active .panel-left {
+  transform: translateX(0);
+}
+.container.active .panel-right {
+  transform: translateX(20%);
+}
+
+@keyframes show {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
